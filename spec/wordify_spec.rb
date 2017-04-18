@@ -1,20 +1,20 @@
 require('rspec')
-require('num_to_let')
+require('wordify')
 
-describe("Fixnum#num_to_let") do
+describe("Fixnum#wordify") do
   it('returns the word equivalent of a single digit number') do
-    expect(4.num_to_let()).to(eq("four"))
+    expect(4.wordify()).to(eq("four"))
   end
   it('returns the word equivalent of a double digit number less than 20') do
-    expect(14.num_to_let()).to(eq("fourteen"))
+    expect(14.wordify()).to(eq("fourteen"))
   end
   it('returns the word equivalent of a double digit number more than 19, less than 100') do
-    expect(24.num_to_let()).to(eq("twenty four"))
+    expect(24.wordify()).to(eq("twenty four"))
   end
   it('returns the word equivalent of a triple digit number') do
-    expect(555.num_to_let()).to(eq("five hundred fifty five"))
+    expect(555.wordify()).to(eq("five hundred fifty five"))
   end
   # it('returns the word equivalent of a four digit number') do
-  #   expect(5555.num_to_let()).to(eq("five thousand five hundred fifty five"))
+  #   expect(5555.wordify()).to(eq("five thousand five hundred fifty five"))
   # end
 end
