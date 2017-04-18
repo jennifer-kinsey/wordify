@@ -9,9 +9,12 @@ describe("Fixnum#num_to_let") do
     expect(14.num_to_let()).to(eq("fourteen"))
   end
   it('returns the word equivalent of a double digit number more than 19, less than 100') do
-    expect(24.num_to_let()).to(eq("twentyfour"))
+    expect(24.num_to_let()).to(eq("twenty four"))
   end
-  # it('returns the word equivalent of a triple digit number') do
-  #   expect(555.num_to_let()).to(eq("fivehundredfiftyfive"))
+  it('returns the word equivalent of a triple digit number') do
+    expect(555.num_to_let()).to(eq("five hundred fifty five"))
+  end
+  # it('returns the word equivalent of a four digit number') do
+  #   expect(5555.num_to_let()).to(eq("five thousand five hundred fifty five"))
   # end
 end
