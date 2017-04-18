@@ -68,10 +68,11 @@ class Fixnum
       end
 
       if (little_array.length == 3).&(!little_array[2].eql?("0"))
-        trans_array.push(words[0].fetch(little_array[2]) + "hundred")
+        trans_array.push(words[0].fetch(little_array[2]) + " hundred")
       end
     end
 
-    trans_array.reverse.join("")
+    trans_array.delete("")
+    trans_array.reverse.join(" ")
   end
 end

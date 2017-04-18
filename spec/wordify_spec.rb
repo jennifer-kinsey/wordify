@@ -9,15 +9,15 @@ describe("Fixnum#wordify") do
     expect(14.wordify()).to(eq("fourteen"))
   end
   it('returns the word equivalent of a double digit number more than 19, less than 100') do
-    expect(24.wordify()).to(eq("twentyfour"))
+    expect(24.wordify()).to(eq("twenty four"))
   end
   it('returns the word equivalent of a triple digit number') do
-    expect(555.wordify()).to(eq("fivehundredfiftyfive"))
+    expect(555.wordify()).to(eq("five hundred fifty five"))
   end
   it('returns the word equivalent of a four digit number') do
-    expect(5555.wordify()).to(eq("fivethousandfivehundredfiftyfive"))
+    expect(5555.wordify()).to(eq("five thousand five hundred fifty five"))
   end
   it('returns the word equivalent of any number up to 999999999999999') do
-    expect(999999999999999.wordify()).to(eq("ninehundredninetyninetrillionninehundredninetyninebillionninehundredninetyninemillionninehundredninetyninethousandninehundredninetynine"))
+    expect(999999999999999.wordify()).to(eq("nine hundred ninety nine trillion nine hundred ninety nine billion nine hundred ninety nine million nine hundred ninety nine thousand nine hundred ninety nine"))
   end
 end
