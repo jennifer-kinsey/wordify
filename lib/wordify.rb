@@ -1,5 +1,5 @@
 class Fixnum
-  def num_to_let
+  def wordify
 
     # places = ["one","teen","ten","hundred"]
 
