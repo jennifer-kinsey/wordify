@@ -1,8 +1,6 @@
 class Fixnum
   def wordify
 
-    # places = ["one","teen","ten","hundred"]
-
     words = [
       {
         "0" => "",
@@ -39,7 +37,9 @@ class Fixnum
         "8" => "eighty",
         "9" => "ninety"
       },
+      ["","thousand","million","billion","trillion"]
     ]
+
     num_array = self.to_s.split("").reverse
     # self = 1984 num_array = ["4","8","9","1"]
     # tri_array = [["4","8","9"]["1","4","2"]]
@@ -54,27 +54,22 @@ class Fixnum
     end
 
     tri_array.each_with_index() do |little_array, index|
+      if little_array != ["0","0","0"]
+        trans_array.push(words[3][index])
+      end
 
-      if little_array[1].eql?("1") #we are in the teens
-        trans_array.push(words[1].fetch(little_array[0]))
+      if little_array[1].eql?("1")
+        trans_array.push(words[1].fetch(little_array[0])) #teens code
       else
-        #ones code
-        trans_array.push(words[0].fetch(little_array[0]))
-        #tens code. only happens if our array has a tens position
+        trans_array.push(words[0].fetch(little_array[0])) #ones code
         if little_array.length != 1
-          trans_array.push(words[2].fetch(little_array[1]) + " ")
+          trans_array.push(words[2].fetch(little_array[1])) #tens code
         end
       end
 
-      # number in hundreds, less than 1000
-      if little_array.length == 3
-        trans_array.push(words[0].fetch(little_array[2]) + " hundred ")
+      if (little_array.length == 3).&(!little_array[2].eql?("0"))
+        trans_array.push(words[0].fetch(little_array[2]) + "hundred")
       end
-      # if !little_array[1].eql?("1") #if we are not in the teens range, use normal ones numbers
-      #   trans_array.push(words[0].fetch(little_array[0]))
-      # elsif little_array[1].eql?("1") #we are in the teens
-      #   trans_array.push(words[1].fetch(little_array[0]))
-      # end
     end
 
     trans_array.reverse.join("")
