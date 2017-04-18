@@ -29,6 +29,7 @@ class Fixnum
         "9" => "nineteen"
       },
       {
+        "0" => "",
         "2" => "twenty",
         "3" => "thirty",
         "4" => "forty",
@@ -53,11 +54,25 @@ class Fixnum
     end
 
     tri_array.each_with_index() do |little_array, index|
-      if !little_array[1].eql?("1") #if we are not in the teens range, use normal ones numbers
+
+      if little_array[1].eql?("1") #we are in the teens
+        trans_array.push(words[1].fetch(little_array[0]))
+      else
+        #ones code
         trans_array.push(words[0].fetch(little_array[0]))
+        #tens code. only happens if our array has a tens position
+        if little_array.length != 1
+          trans_array.push(words[2].fetch(little_array[1]))
+        end
       end
+
+      # if !little_array[1].eql?("1") #if we are not in the teens range, use normal ones numbers
+      #   trans_array.push(words[0].fetch(little_array[0]))
+      # elsif little_array[1].eql?("1") #we are in the teens
+      #   trans_array.push(words[1].fetch(little_array[0]))
+      # end
     end
 
-    trans_array.join("")
+    trans_array.reverse.join("")
   end
 end
